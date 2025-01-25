@@ -14,9 +14,12 @@ def process():
     city_input = data.get("city", "")
     dropdown_choice = data.get("dropdown", "")
     
-    # Example processing
-    response_message = f"You entered '{city_input}' and selected '{dropdown_choice}'."
-    return jsonify({"message": response_message})
+    response_data = {
+        "percentage": 85,
+        "checklist": ["item1", "item2", "item3", "item4"]
+    }
+    
+    return jsonify(response_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
