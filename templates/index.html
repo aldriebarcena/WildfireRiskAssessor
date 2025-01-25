@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Simple Form</h1>
+    <form id="dataForm">
+      <label for="textInput">Enter Text:</label>
+      <input type="text" id="textInput" name="city" required />
+
+      <label for="dropdown">Choose an Option:</label>
+      <select id="dropdown" name="dropdown" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+
+      <button type="submit" id="submitButton">Submit</button>
+    </form>
+    <p id="responseOutput">Response will appear here.</p>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
