@@ -64,19 +64,35 @@ def scrapeWeather(lat_long_tuple):
    return (weather, temperature, temperature_min, temperature_max, wind, humidity, cloud)
 
 def vegetationMultiplier(vegetation):
-   vegetationDict = {
-      "coniferous" : 0.9,
-      "deciduous" : 0.5,
-      "shrubland" : 0.8,
-      "grasslands" : 0.7,
-      "savanna" : 0.6,
-      "wetland" : 0.2,
-      "agricultural" : 0.5,
-      "urban" : 0.4,
-      "barren" : 0.0,
-      "mixed" : 0.6
-   }
-   return vegetationDict[vegetation]
+    vegetationDict = {
+        "coniferous": 0.9,
+        "deciduous": 0.5,
+        "shrubland": 0.8,
+        "grasslands": 0.7,
+        "savanna": 0.6,
+        "wetland": 0.2,
+        "agricultural": 0.5,
+        "urban": 0.4,
+        "barren": 0.0,
+        "mixed": 0.6,
+        "tundra": 0.1,
+        "rainforest": 0.3,
+        "chaparral": 0.85,
+        "mangroves": 0.2,
+        "dry savanna": 0.7,
+        "wet savanna": 0.4,
+        "bamboo forest": 0.6,
+        "pine forest": 0.9,
+        "eucalyptus forest": 0.95,
+        "tropical grasslands": 0.75,
+        "desert scrub": 0.3,
+        "peatland": 0.8,
+        "heathland": 0.8,
+        "steppe": 0.6,
+        "orchards": 0.5,
+        "plantations": 0.7
+    }
+    return vegetationDict.get(vegetation, 0.5)
 
 def IsaiahAlgorithm(city, vegetation):
     lat_long_tuple = city_to_lat_long_API(city)
@@ -92,21 +108,29 @@ def IsaiahAlgorithm(city, vegetation):
     cloud = weather_data_tuple[6]
     vegetation = vegetationMultiplier(vegetation)
 
-    temperature_weight = 0.3
-    wind_weight = 0.25
-    humidity_weight = 0.15
+    temperature_weight = 0.4
+    wind_weight = 0.3
+    humidity_weight = 0.1
     cloud_weight = 0.05
-    vegetation_weight = 0.25
+    vegetation_weight = 0.15
 
-    temperature_factor = (temperature - 250) / (350 - 250)
-    wind_factor = wind / 50
-    humidity_factor = humidity / 100
-    cloud_factor = cloud / 100
+    temperature_factor = ((temperature - 250) / 100) ** 2
+    wind_factor = (wind / 60) ** 2
+    humidity_factor = 1 - min(humidity / 100, 1)
+    cloud_factor = 1 - min(cloud / 100, 1)
     vegetation_factor = vegetation
 
-    risk = (temperature_factor * temperature_weight) + (wind_factor * wind_weight) + (humidity_factor * humidity_weight) + (cloud_factor * cloud_weight) + (vegetation_factor * vegetation_weight)
+    risk = (temperature_factor * temperature_weight) + \
+           (wind_factor * wind_weight) + \
+           (humidity_factor * humidity_weight) + \
+           (cloud_factor * cloud_weight) + \
+           (vegetation_factor * vegetation_weight)
 
-    return math.trunc(risk * 100)
+    risk = min(max(risk, 0), 1)
+
+    return round(risk * 100)
+
+
 
 @app.route('/')
 def index():
