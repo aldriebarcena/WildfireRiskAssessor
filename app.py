@@ -43,6 +43,9 @@ def generate_checklist(percentage, vegetation_type):
         # Handle the error and return an empty checklist if the JSON is invalid
         return [f"Error making checklist"]
 
+def wildfire_risk():
+    return 80
+
 # Define the route for the homepage
 @app.route('/')
 def index():
@@ -54,7 +57,7 @@ def process():
     data = request.get_json()
     city_input = data.get("city", "")
     dropdown_choice = data.get("dropdown", "shrubland")  # Default to "shrubland" if not provided
-    percentage = 32
+    percentage = wildfire_risk()
     
     # Call the generate_checklist function to get the checklist data
     checklist = generate_checklist(percentage, dropdown_choice)
