@@ -1,76 +1,218 @@
-/* Apply Rubik Dirt font to h1 */
+/* General Styling */
+body {
+  background: rgba(232, 229, 204, 0.844);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s ease-in-out;
+  font-family: "Lexend Tera", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Title */
 h1 {
-  text-align: center; /* Horizontally centers the text */
-  margin-top: 200px; /* Moves the heading down */
-  color: #333; /* Optional: changes the color */
-  font-family: "Rubik Dirt", serif; /* Apply the font to the heading */
-  font-weight: 400; /* Regular weight */
-  font-style: normal; /* Normal style */
+  text-align: center;
+  margin: 90px auto 10px;
+  color: #333;
+  font-family: "Rubik Dirt", serif;
   font-size: 60px;
 }
 
-label {
-  display: block; /* Makes the label take up the full width */
-  text-align: center; /* Centers the text horizontally */
-  margin: 0px 0; /* Adds vertical spacing */
-  font-weight: bold; /* Makes the text bold */
-  font-family: "Lexend Tera", sans-serif; /* Optional: changes the font */
-}
-
+/* Form */
 form {
   display: flex;
-  flex-direction: column; /* Stacks all form elements vertically */
-  align-items: center; /* Centers elements horizontally */
-  gap: 5px; /* Adds space between elements */
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  text-align: center;
 }
 
 input[type="text"],
 select {
-  margin: 10px 0; /* Adds vertical space between elements */
-  padding: 5px; /* Adds space inside the textbox */
-  width: 300px; /* Adjusts the width of the textbox */
-  font-family: "Lexend Tera";
-}
-
-body {
-  background-color: rgba(184, 219, 245, 0.844); /* Background color */
-}
-
-p {
-  text-align: center; /* Horizontally centers the text */
-  margin-top: 50px; /* Moves the heading down */
-  color: #333; /* Optional: changes the color */
-  font-size: 60px;
-  font-family: "Lexend Tera", sans-serif; /* Optional: changes the font */
-}
-.paraPerc {
-  text-align: center; /* Horizontally centers the text */
-  margin-top: 50px; /* Moves the heading down */
-  color: #333; /* Optional: changes the color */
-  font-size: 50px;
-  font-family: "Lexend Tera", sans-serif; /* Optional: changes the font */
-}
-.paraCL {
-  text-align: center; /* Horizontally centers the text */
-  margin-top: 20px; /* Moves the heading down */
-  color: #333; /* Optional: changes the color */
-  font-size: 20px;
-  font-family: "Lexend Tera", sans-serif; /* Optional: changes the font */
+  padding: 5px;
+  width: 300px;
+  font-family: "Lexend Tera", sans-serif;
 }
 
 button {
-  width: 100px; /* Optional: Set consistent width */
-  padding: 5px; /* Adds some space inside the elements */
+  width: 120px;
+  padding: 10px;
+  cursor: pointer;
 }
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.perImageContainer {
+  position: relative;
+}
+
+.imageIdPer {
+  max-width: 300px;
+  height: auto;
+}
+
+.imageIdCL {
+  max-width: 500px;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* Position the percentage on top of the image */
+.paraPerc {
+  position: absolute;
+  top: 22%; /* Adjust percentage to move it closer or farther from the top */
+  left: 50%; /* Centers it horizontally */
+  transform: translateX(-50%); /* Fine-tune horizontal centering */
+  font-size: 50px;
+  font-family: "Lexend Tera", sans-serif;
+  text-align: center;
+  color: white; /* Make sure the text is visible on top of the image */
+}
+
 ul {
-  text-align: center; /* Horizontally centers the text */
-  margin-top: 50px; /* Moves the heading down */
-  color: #333; /* Optional: changes the color */
-  /* list-style-type: none; */
-  list-style-position: inside;
-  font-family: "Lexend Tera", sans-serif; /* Optional: changes the font */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
+
+/* Checklist Container Styling */
+.checklistContainer {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  max-width: 500px;
+  height: auto;
+  overflow: hidden;
+  margin: 10px auto;
+}
+
+/* Image Styling */
+.imageIdCL {
+  display: block;
+  width: 100%; /* Ensure image fills container */
+  height: auto;
+}
+
+/* Checklist Styling */
+.checklist {
+  position: absolute;
+  top: 50%; /* Adjust the vertical positioning */
+  left: 50%; /* Align the list slightly inside the image */
+  width: 60%; /* Take up 90% of the image width */
+  max-height: 70%; /* Ensure the checklist does not extend beyond the image */
+  overflow-y: auto; /* Allow scrolling if there are too many items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5; /* Adjust line height for readability */
+  font-family: "Lexend Tera", sans-serif;
+}
+
+/* Checklist Item Styling */
 li {
-  text-align: center; /* Horizontally centers the text */
+  margin-bottom: 10px; /* Space between items */
+  word-wrap: break-word; /* Prevent words from overflowing */
+  max-width: 100%; /* Prevent list items from extending beyond the list */
+}
+
+.fireImageContainer {
+  margin-top: 50px;
+  position: relative;
+  width: 300px; /* Adjust this to match your image size */
+  height: 300px; /* Adjust this to match your image size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fye1,
+.fye2,
+.fye3,
+.fye4,
+.fye5,
+.fye6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden; /* Start by hiding all images */
+  z-index: 0; /* Start behind other images */
+}
+
+.fye1 {
+  animation: fireCycle 0.3s infinite;
+}
+
+.fye2 {
+  animation: fireCycle 0.3s infinite 0.05s;
+}
+
+.fye3 {
+  animation: fireCycle 0.3s infinite 0.1s;
+}
+
+.fye4 {
+  animation: fireCycle 0.3s infinite 0.15s;
+}
+
+.fye5 {
+  animation: fireCycle 0.3s infinite 0.2s;
+}
+
+.fye6 {
+  animation: fireCycle 0.3s infinite 0.25s;
+}
+
+@keyframes fireCycle {
+  0%,
+  16.66% {
+    visibility: visible;
+    z-index: 1; /* Bring image to the front */
+  }
+  16.67%,
+  50% {
+    visibility: hidden;
+    z-index: 0; /* Push image behind */
+  }
+  50.01%,
+  83.33% {
+    visibility: hidden;
+    z-index: 0;
+  }
+  83.34%,
+  100% {
+    visibility: visible;
+    z-index: 1; /* Bring image to the front */
+  }
+}
+
+#secondState {
+  display: none; /* Hidden by default */
+}
+
+#firstState {
+  display: block;
 }

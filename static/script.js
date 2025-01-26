@@ -9,6 +9,13 @@ document
       data[key] = value;
     });
 
+    // Show the loading animation
+    const firstState = document.getElementById("firstState");
+    const loadingAnimation = document.getElementById("loadingAnimation");
+
+    firstState.style.display = "none";
+    loadingAnimation.style.display = "block";
+
     async function isValidCity(city) {
       const apiKey = "AIzaSyDrq5VXjO6Aja69LTspzqWigseeg6NXL8I";
       const response = await fetch(
@@ -27,7 +34,9 @@ document
     try {
       const cityIsValid = await isValidCity(city);
       if (!cityIsValid) {
+        loadingAnimation.style.display = "none"; // Hide the animation if invalid
         alert("Invalid city name. Please enter a valid city.");
+        firstState.style.display = "block";
         return;
       }
 
@@ -39,11 +48,15 @@ document
 
       const result = await response.json();
 
+      // Hide the loading animation after processing is done
+      loadingAnimation.style.display = "none";
+
       // Hide the first form (dataForm)
       document.getElementById("dataForm").style.display = "none";
 
       // Show the second form (changeBkg)
-      document.getElementById("changeBkg").style.display = "block";
+      document.getElementById("secondState").style.display = "block";
+      document.getElementById("header").textContent = "YOUR WILDFIRE RISK";
 
       // update percentage
       const percentage = document.getElementById("percentage");
@@ -61,21 +74,22 @@ document
       // change background color based on percentage
       const body = document.body;
 
+      // Add the background color change logic
       if (result.percentage >= 80) {
-        body.style.backgroundColor = "green";
+        body.style.backgroundColor = "#c24036";
       } else if (result.percentage >= 60) {
-        body.style.backgroundColor = "yellow";
+        body.style.backgroundColor = "#bd7926";
       } else if (result.percentage >= 40) {
-        body.style.backgroundColor = "orange";
+        body.style.backgroundColor = "#e6b925";
       } else if (result.percentage >= 20) {
-        body.style.backgroundColor = "red";
+        body.style.backgroundColor = "#fad24d";
       } else {
         body.style.backgroundColor = "gray";
       }
-
     } catch (error) {
       console.error("Error:", error);
       document.getElementById("responseOutput").textContent =
         "An error occurred.";
     }
+    loadingAnimation.style.display = "none"; // Hide the animation if an error occurs
   });
