@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wildfire Risk Assesor</title>
 
-    <!-- Stylesheet -->
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
 
-    <!-- Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +19,6 @@
   </head>
 
   <body>
-    <!-- First State (Form for Input) -->
     <div id="firstState">
       <h1 id="header">Wildfire Risk Assessor</h1>
 
@@ -193,7 +190,6 @@
       </form>
     </div>
 
-    <!-- Loading Animation -->
     <div id="loadingAnimation" class="fireImageContainer" style="display: none">
       <img
         class="fye1"
@@ -227,12 +223,10 @@
       />
     </div>
 
-    <!-- Second State (Risk Display) -->
     <div id="secondState" style="display: none">
       <h1>Your Wildfire Risk</h1>
 
       <form id="changeBkg">
-        <!-- Image and Checklist Section -->
         <div class="imageContainer">
           <div class="perImageContainer">
             <img
@@ -251,13 +245,11 @@
             alt="Checklist"
           />
           <ul class="checklist">
-            <!-- Checklist items will be dynamically inserted here -->
           </ul>
         </div>
       </form>
     </div>
 
-    <!-- Script -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
