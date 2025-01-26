@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wildfire Risk Assesor</title>
-    
+
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
 
     <!-- Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&family=Rubik+Dirt&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Tera&family=Rubik+Dirt&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -25,16 +31,162 @@
 
         <label for="dropdown">Vegetation:</label>
         <select id="dropdown" name="dropdown" required>
-          <option value="coniferous">Forest (Coniferous)</option>
-          <option value="deciduous">Forest (Deciduous)</option>
-          <option value="shrubland">Shrubland (Chaparral)</option>
-          <option value="grasslands">Grasslands</option>
-          <option value="savanna">Savanna</option>
-          <option value="wetland">Wetland Vegetation</option>
-          <option value="agricultural">Agricultural Land</option>
-          <option value="urban">Urban Landscaping</option>
-          <option value="barren">Barren Land (No Vegetation)</option>
-          <option value="mixed">Mixed Vegetation</option>
+          <option
+            value="coniferous"
+            title="Dense evergreen forests prone to fast-spreading fires."
+          >
+            Forest (Coniferous)
+          </option>
+          <option
+            value="deciduous"
+            title="Broadleaf trees that lose leaves seasonally; lower fire risk than conifers."
+          >
+            Forest (Deciduous)
+          </option>
+          <option
+            value="shrubland"
+            title="Dry, dense shrubs, highly flammable under dry conditions."
+          >
+            Shrubland (Chaparral)
+          </option>
+          <option
+            value="grasslands"
+            title="Open areas with grass-dominated vegetation, prone to seasonal fires."
+          >
+            Grasslands
+          </option>
+          <option
+            value="savanna"
+            title="Grasslands with scattered trees; fire risk depends on moisture levels."
+          >
+            Savanna
+          </option>
+          <option
+            value="wetland"
+            title="Moist areas with reeds and cattails; minimal fire risk."
+          >
+            Wetland Vegetation
+          </option>
+          <option
+            value="agricultural"
+            title="Farmed land with crops or orchards; lower fire risk due to management."
+          >
+            Agricultural Land
+          </option>
+          <option
+            value="urban"
+            title="Parks, gardens, and landscaping in cities; moderate fire risk."
+          >
+            Urban Landscaping
+          </option>
+          <option
+            value="barren"
+            title="Rocky or sandy areas with no vegetation, little to no fire risk."
+          >
+            Barren Land (No Vegetation)
+          </option>
+          <option
+            value="mixed"
+            title="Areas with a combination of vegetation types; fire risk depends on composition."
+          >
+            Mixed Vegetation
+          </option>
+          <option
+            value="tundra"
+            title="Cold, treeless regions with moss and lichens; low fire risk."
+          >
+            Tundra
+          </option>
+          <option
+            value="rainforest"
+            title="Dense, wet forests; lower fire risk unless exposed to prolonged drought."
+          >
+            Rainforest
+          </option>
+          <option
+            value="chaparral"
+            title="Drought-resistant shrubs and small trees, highly flammable."
+          >
+            Chaparral
+          </option>
+          <option
+            value="mangroves"
+            title="Coastal wetlands with salt-tolerant trees; minimal fire risk."
+          >
+            Mangroves
+          </option>
+          <option
+            value="dry savanna"
+            title="Savannas with low rainfall, higher fire risk than wet savannas."
+          >
+            Dry Savanna
+          </option>
+          <option
+            value="wet savanna"
+            title="Moist savannas with higher rainfall, lower fire risk."
+          >
+            Wet Savanna
+          </option>
+          <option
+            value="bamboo forest"
+            title="Dense bamboo vegetation; fire risk depends on moisture levels."
+          >
+            Bamboo Forest
+          </option>
+          <option
+            value="pine forest"
+            title="Evergreen forests with pine trees; high fire risk in dry conditions."
+          >
+            Pine Forest
+          </option>
+          <option
+            value="eucalyptus forest"
+            title="Eucalyptus trees with highly flammable oils; extreme fire risk."
+          >
+            Eucalyptus Forest
+          </option>
+          <option
+            value="tropical grasslands"
+            title="Grasslands in tropical regions, fire risk varies by season."
+          >
+            Tropical Grasslands
+          </option>
+          <option
+            value="desert scrub"
+            title="Sparse, drought-tolerant shrubs in deserts; lower fire risk."
+          >
+            Desert Scrub
+          </option>
+          <option
+            value="peatland"
+            title="Wetlands with accumulated organic matter; fire risk in dry seasons."
+          >
+            Peatland
+          </option>
+          <option
+            value="heathland"
+            title="Open areas with dense shrubs; fire risk under dry conditions."
+          >
+            Heathland
+          </option>
+          <option
+            value="steppe"
+            title="Large grasslands with dry, semi-arid climates; moderate fire risk."
+          >
+            Steppe
+          </option>
+          <option
+            value="orchards"
+            title="Cultivated trees for fruit or nuts; moderate fire risk."
+          >
+            Orchards
+          </option>
+          <option
+            value="plantations"
+            title="Commercially managed crops or forests; fire risk depends on management."
+          >
+            Plantations
+          </option>
         </select>
 
         <button type="submit" id="submitButton">Submit</button>
@@ -43,12 +195,36 @@
 
     <!-- Loading Animation -->
     <div id="loadingAnimation" class="fireImageContainer" style="display: none">
-      <img class="fye1" src="{{ url_for('static', filename='images/fye1.png') }}" alt="fye1" />
-      <img class="fye2" src="{{ url_for('static', filename='images/fye2.png') }}" alt="fye2" />
-      <img class="fye3" src="{{ url_for('static', filename='images/fye3.png') }}" alt="fye3" />
-      <img class="fye4" src="{{ url_for('static', filename='images/fye4.png') }}" alt="fye4" />
-      <img class="fye5" src="{{ url_for('static', filename='images/fye5.png') }}" alt="fye5" />
-      <img class="fye6" src="{{ url_for('static', filename='images/fye6.png') }}" alt="fye6" />
+      <img
+        class="fye1"
+        src="{{ url_for('static', filename='images/fye1.png') }}"
+        alt="fye1"
+      />
+      <img
+        class="fye2"
+        src="{{ url_for('static', filename='images/fye2.png') }}"
+        alt="fye2"
+      />
+      <img
+        class="fye3"
+        src="{{ url_for('static', filename='images/fye3.png') }}"
+        alt="fye3"
+      />
+      <img
+        class="fye4"
+        src="{{ url_for('static', filename='images/fye4.png') }}"
+        alt="fye4"
+      />
+      <img
+        class="fye5"
+        src="{{ url_for('static', filename='images/fye5.png') }}"
+        alt="fye5"
+      />
+      <img
+        class="fye6"
+        src="{{ url_for('static', filename='images/fye6.png') }}"
+        alt="fye6"
+      />
     </div>
 
     <!-- Second State (Risk Display) -->
@@ -59,13 +235,21 @@
         <!-- Image and Checklist Section -->
         <div class="imageContainer">
           <div class="perImageContainer">
-            <img class="imageIdPer" src="{{ url_for('static', filename='images/perFye100.png') }}" alt="perFye100" />
+            <img
+              class="imageIdPer"
+              src="{{ url_for('static', filename='images/perFye100.png') }}"
+              alt="perFye100"
+            />
           </div>
           <p class="paraPerc" id="percentage"></p>
         </div>
 
         <div class="checklistContainer">
-          <img class="imageIdCL" src="{{ url_for('static', filename='images/checkLr.png') }}" alt="Checklist" />
+          <img
+            class="imageIdCL"
+            src="{{ url_for('static', filename='images/checkLr.png') }}"
+            alt="Checklist"
+          />
           <ul class="checklist">
             <!-- Checklist items will be dynamically inserted here -->
           </ul>
