@@ -1,7 +1,7 @@
 document
   .getElementById("dataForm")
   .addEventListener("submit", async (event) => {
-    event.preventDefault(); // Prevents the form's default behavior
+    event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
     const data = {};
@@ -9,14 +9,11 @@ document
       data[key] = value;
     });
 
-    // Show the loading animation
     const firstState = document.getElementById("firstState");
     const loadingAnimation = document.getElementById("loadingAnimation");
-
     firstState.style.display = "none";
     loadingAnimation.style.display = "block";
 
-    // Validate city
     async function isValidCity(city) {
       const apiKey = "AIzaSyDrq5VXjO6Aja69LTspzqWigseeg6NXL8I";
       const response = await fetch(
@@ -30,13 +27,12 @@ document
     try {
       const cityIsValid = await isValidCity(city);
       if (!cityIsValid) {
-        loadingAnimation.style.display = "none"; // Hide the animation if invalid
+        loadingAnimation.style.display = "none";
         alert("Invalid city name. Please enter a valid city.");
         firstState.style.display = "block";
         return;
       }
 
-      // Submit data to the server
       const response = await fetch("/process", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,21 +40,14 @@ document
       });
       const result = await response.json();
 
-      // Hide loading animation after processing is done
       loadingAnimation.style.display = "none";
-
-      // Hide the first form (dataForm)
       document.getElementById("dataForm").style.display = "none";
-
-      // Show the second form (changeBkg)
       document.getElementById("secondState").style.display = "block";
       document.getElementById("header").textContent = "YOUR WILDFIRE RISK";
 
-      // Update percentage
       const percentage = document.getElementById("percentage");
       percentage.textContent = `${result.percentage}%`;
 
-      // Update checklist
       const ulElement = document.querySelector("ul");
       ulElement.innerHTML = ""; // Clear previous checklist
       result.checklist.forEach((item) => {
@@ -67,7 +56,6 @@ document
         ulElement.appendChild(li);
       });
 
-      // Change background color based on percentage
       const body = document.body;
       if (result.percentage >= 80) {
         body.style.backgroundColor = "#c24036";
@@ -86,5 +74,5 @@ document
         "An error occurred.";
     }
 
-    loadingAnimation.style.display = "none"; // Hide the animation if an error occurs
+    loadingAnimation.style.display = "none";
   });
