@@ -20,6 +20,7 @@ document
       );
       return data.results && data.results.length > 0;
     }
+
     console.log(data);
     const city = data.city;
 
@@ -50,6 +51,7 @@ document
 
       // update checklist
       const ulElement = document.querySelector("ul");
+      ulElement.innerHTML = ""; // Clear previous checklist
       result.checklist.forEach((item) => {
         const li = document.createElement("li");
         li.textContent = item;
@@ -70,6 +72,7 @@ document
       } else {
         body.style.backgroundColor = "gray";
       }
+
     } catch (error) {
       console.error("Error:", error);
       document.getElementById("responseOutput").textContent =
