@@ -16,21 +16,17 @@ document
     firstState.style.display = "none";
     loadingAnimation.style.display = "block";
 
+    // Validate city
     async function isValidCity(city) {
       const apiKey = "AIzaSyDrq5VXjO6Aja69LTspzqWigseeg6NXL8I";
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`
       );
       const data = await response.json();
-      console.log(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`
-      );
       return data.results && data.results.length > 0;
     }
 
-    console.log(data);
     const city = data.city;
-
     try {
       const cityIsValid = await isValidCity(city);
       if (!cityIsValid) {
@@ -40,15 +36,15 @@ document
         return;
       }
 
+      // Submit data to the server
       const response = await fetch("/process", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
       const result = await response.json();
 
-      // Hide the loading animation after processing is done
+      // Hide loading animation after processing is done
       loadingAnimation.style.display = "none";
 
       // Hide the first form (dataForm)
@@ -58,11 +54,11 @@ document
       document.getElementById("secondState").style.display = "block";
       document.getElementById("header").textContent = "YOUR WILDFIRE RISK";
 
-      // update percentage
+      // Update percentage
       const percentage = document.getElementById("percentage");
       percentage.textContent = `${result.percentage}%`;
 
-      // update checklist
+      // Update checklist
       const ulElement = document.querySelector("ul");
       ulElement.innerHTML = ""; // Clear previous checklist
       result.checklist.forEach((item) => {
@@ -71,10 +67,8 @@ document
         ulElement.appendChild(li);
       });
 
-      // change background color based on percentage
+      // Change background color based on percentage
       const body = document.body;
-
-      // Add the background color change logic
       if (result.percentage >= 80) {
         body.style.backgroundColor = "#c24036";
       } else if (result.percentage >= 60) {
@@ -91,5 +85,6 @@ document
       document.getElementById("responseOutput").textContent =
         "An error occurred.";
     }
+
     loadingAnimation.style.display = "none"; // Hide the animation if an error occurs
   });

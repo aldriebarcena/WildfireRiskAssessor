@@ -3,23 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wildfire Risks</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
+    <title>Wildfire Risk Assesor</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+    <!-- Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend+Tera&family=Rubik+Dirt&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&family=Rubik+Dirt&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <div id="firstState">
-      <h1 id="header">WILDFIRE RISKS</h1>
 
-      <!-- Form for Input -->
+  <body>
+    <!-- First State (Form for Input) -->
+    <div id="firstState">
+      <h1 id="header">Wildfire Risk Assesor</h1>
+
       <form id="dataForm">
         <label for="textInput">City:</label>
         <input type="text" id="textInput" name="city" required />
@@ -42,59 +41,31 @@
       </form>
     </div>
 
+    <!-- Loading Animation -->
     <div id="loadingAnimation" class="fireImageContainer" style="display: none">
-      <img
-        class="fye1"
-        src="{{ url_for('static', filename='images/fye1.png') }}"
-        alt="fye1"
-      />
-      <img
-        class="fye2"
-        src="{{ url_for('static', filename='images/fye2.png') }}"
-        alt="fye2"
-      />
-      <img
-        class="fye3"
-        src="{{ url_for('static', filename='images/fye3.png') }}"
-        alt="fye3"
-      />
-      <img
-        class="fye4"
-        src="{{ url_for('static', filename='images/fye4.png') }}"
-        alt="fye4"
-      />
-      <img
-        class="fye5"
-        src="{{ url_for('static', filename='images/fye5.png') }}"
-        alt="fye5"
-      />
-      <img
-        class="fye6"
-        src="{{ url_for('static', filename='images/fye6.png') }}"
-        alt="fye6"
-      />
+      <img class="fye1" src="{{ url_for('static', filename='images/fye1.png') }}" alt="fye1" />
+      <img class="fye2" src="{{ url_for('static', filename='images/fye2.png') }}" alt="fye2" />
+      <img class="fye3" src="{{ url_for('static', filename='images/fye3.png') }}" alt="fye3" />
+      <img class="fye4" src="{{ url_for('static', filename='images/fye4.png') }}" alt="fye4" />
+      <img class="fye5" src="{{ url_for('static', filename='images/fye5.png') }}" alt="fye5" />
+      <img class="fye6" src="{{ url_for('static', filename='images/fye6.png') }}" alt="fye6" />
     </div>
 
+    <!-- Second State (Risk Display) -->
     <div id="secondState" style="display: none">
-      <h1 id="">YOUR WILDFIRE RISK</h1>
-      <!-- Image and Checklist -->
+      <h1>Your Wildfire Risk</h1>
+
       <form id="changeBkg">
+        <!-- Image and Checklist Section -->
         <div class="imageContainer">
           <div class="perImageContainer">
-            <img
-              class="imageIdPer"
-              src="{{ url_for('static', filename='images/perFye100.png') }}"
-              alt="perFye100"
-            />
+            <img class="imageIdPer" src="{{ url_for('static', filename='images/perFye100.png') }}" alt="perFye100" />
           </div>
           <p class="paraPerc" id="percentage"></p>
         </div>
+
         <div class="checklistContainer">
-          <img
-            class="imageIdCL"
-            src="{{ url_for('static', filename='images/checkLr.png') }}"
-            alt="Checklist"
-          />
+          <img class="imageIdCL" src="{{ url_for('static', filename='images/checkLr.png') }}" alt="Checklist" />
           <ul class="checklist">
             <!-- Checklist items will be dynamically inserted here -->
           </ul>
@@ -102,6 +73,7 @@
       </form>
     </div>
 
+    <!-- Script -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

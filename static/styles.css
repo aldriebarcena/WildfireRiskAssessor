@@ -20,7 +20,7 @@ h1 {
   font-size: 60px;
 }
 
-/* Form */
+/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
@@ -34,20 +34,41 @@ label {
   text-align: center;
 }
 
-input[type="text"],
+/* input[type="text"], select (Unified Styling) */
+input,
 select {
-  padding: 5px;
+  padding: 10px;
   width: 300px;
   font-family: "Lexend Tera", sans-serif;
+  border: 1px solid #ccc; /* Custom border */
+  background: transparent; /* Transparent background */
+  appearance: none; /* Removes default styling */
+}
+
+input:focus,
+select:focus {
+  outline: none; /* Removes focus outline */
+  border-color: #007bff; /* Custom focus border color */
+}
+
+select option {
+  padding: 10px; /* Adds padding inside options */
 }
 
 button {
-  width: 120px;
-  padding: 10px;
+  width: 100px;
+  padding: 8px;
   cursor: pointer;
+  background-color: #37a662; /* Button color */
+  color: white; /* Text color */
+  font-family: "Lexend Tera", sans-serif;
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center;
+  font-size: 10px; /* Text size */
 }
 
-/* Image Container */
+/* Image Container Styling */
 .imageContainer {
   position: relative;
   display: flex;
@@ -57,42 +78,32 @@ button {
   gap: 20px;
 }
 
-.perImageContainer {
-  position: relative;
-}
-
-.imageIdPer {
+/* Image Styling */
+.imageIdPer,
+.imageIdCL {
   max-width: 300px;
   height: auto;
 }
 
 .imageIdCL {
   max-width: 500px;
-  height: auto;
   margin: 10px auto;
 }
 
-/* Position the percentage on top of the image */
+/* Image Positioning */
+.perImageContainer {
+  position: relative;
+}
+
 .paraPerc {
   position: absolute;
-  top: 22%; /* Adjust percentage to move it closer or farther from the top */
-  left: 50%; /* Centers it horizontally */
-  transform: translateX(-50%); /* Fine-tune horizontal centering */
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 50px;
   font-family: "Lexend Tera", sans-serif;
   text-align: center;
-  color: white; /* Make sure the text is visible on top of the image */
-}
-
-ul {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+  color: white;
 }
 
 /* Checklist Container Styling */
@@ -106,42 +117,37 @@ ul {
   margin: 10px auto;
 }
 
-/* Image Styling */
-.imageIdCL {
-  display: block;
-  width: 100%; /* Ensure image fills container */
-  height: auto;
-}
-
 /* Checklist Styling */
 .checklist {
   position: absolute;
-  top: 50%; /* Adjust the vertical positioning */
-  left: 50%; /* Align the list slightly inside the image */
-  width: 60%; /* Take up 90% of the image width */
-  max-height: 70%; /* Ensure the checklist does not extend beyond the image */
-  overflow-y: auto; /* Allow scrolling if there are too many items */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: left;
   font-size: 14px;
-  line-height: 1.5; /* Adjust line height for readability */
+  line-height: 1.5;
   font-family: "Lexend Tera", sans-serif;
+  width: 60%;
+  max-height: 70%;
+  overflow-y: auto;
 }
 
 /* Checklist Item Styling */
 li {
-  margin-bottom: 10px; /* Space between items */
-  word-wrap: break-word; /* Prevent words from overflowing */
-  max-width: 100%; /* Prevent list items from extending beyond the list */
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
+/* Fire Image Container */
 .fireImageContainer {
   margin-top: 50px;
   position: relative;
-  width: 300px; /* Adjust this to match your image size */
-  height: 300px; /* Adjust this to match your image size */
+  width: 300px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,8 +164,8 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  visibility: hidden; /* Start by hiding all images */
-  z-index: 0; /* Start behind other images */
+  visibility: hidden;
+  z-index: 0;
 }
 
 .fye1 {
@@ -190,12 +196,12 @@ li {
   0%,
   16.66% {
     visibility: visible;
-    z-index: 1; /* Bring image to the front */
+    z-index: 1;
   }
   16.67%,
   50% {
     visibility: hidden;
-    z-index: 0; /* Push image behind */
+    z-index: 0;
   }
   50.01%,
   83.33% {
@@ -205,14 +211,15 @@ li {
   83.34%,
   100% {
     visibility: visible;
-    z-index: 1; /* Bring image to the front */
+    z-index: 1;
   }
 }
 
-#secondState {
-  display: none; /* Hidden by default */
-}
-
+/* State Display */
 #firstState {
   display: block;
+}
+
+#secondState {
+  display: none;
 }
